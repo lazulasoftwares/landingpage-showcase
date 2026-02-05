@@ -26,10 +26,11 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
+      - name: Clean install dependencies
         run: |
-          npm ci --force
-          npm rebuild rollup
+          rm -rf node_modules package-lock.json
+          npm install
+          npm install --save-optional @rollup/rollup-linux-x64-gnu
 
       - name: Build
         run: npm run build
